@@ -4,15 +4,15 @@ platforms: java
 author: alvadb
 ---
 
-#Getting Started with Documentdb - Manage HA Document DB - in Java #
+## Getting Started with Documentdb - Manage HA Document DB - in Java ##
 
 
-  Azure DocumentDB sample for high availability.
-   - Create a DocumentDB configured with a single read location
-   - Get the credentials for the DocumentDB
-   - Update the DocumentDB with additional read locations
-   - add collection to the DocumentDB with throughput 4000
-   - Delete the DocumentDB
+Azure DocumentDB sample for high availability.
+  - Create a DocumentDB configured with a single read location
+  - Get the credentials for the DocumentDB
+  - Update the DocumentDB with additional read locations
+  - Add collection to the DocumentDB with throughput 4000
+  - Delete the DocumentDB
  
 
 ## Running this Sample ##
@@ -29,7 +29,7 @@ Set the environment variable `AZURE_AUTH_LOCATION` with the full path for an aut
 
 ## More information ##
 
-[http://azure.com/java] (http://azure.com/java)
+[http://azure.com/java](http://azure.com/java)
 
 If you don't have a Microsoft Azure subscription you can get a FREE trial account [here](http://go.microsoft.com/fwlink/?LinkId=330212)
 
