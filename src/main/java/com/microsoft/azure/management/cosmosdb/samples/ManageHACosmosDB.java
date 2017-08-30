@@ -4,7 +4,7 @@
  * license information.
  */
 
-package com.microsoft.azure.management.documentdb.samples;
+package com.microsoft.azure.management.cosmosdb.samples;
 
 import com.microsoft.azure.credentials.ApplicationTokenCredentials;
 import com.microsoft.azure.documentdb.DocumentClient;
@@ -15,9 +15,9 @@ import com.microsoft.azure.documentdb.DocumentCollection;
 import com.microsoft.azure.documentdb.DocumentClientException;
 import com.microsoft.azure.documentdb.RequestOptions;
 import com.microsoft.azure.management.Azure;
-import com.microsoft.azure.management.documentdb.DatabaseAccountKind;
-import com.microsoft.azure.management.documentdb.DocumentDBAccount;
-import com.microsoft.azure.management.documentdb.implementation.DatabaseAccountListKeysResult;
+import com.microsoft.azure.management.cosmosdb.CosmosDBAccount;
+import com.microsoft.azure.management.cosmosdb.DatabaseAccountKind;
+import com.microsoft.azure.management.cosmosdb.implementation.DatabaseAccountListKeysResult;
 import com.microsoft.azure.management.resources.fluentcore.arm.Region;
 import com.microsoft.azure.management.resources.fluentcore.utils.SdkContext;
 import com.microsoft.azure.management.samples.Utils;
@@ -26,14 +26,14 @@ import com.microsoft.rest.LogLevel;
 import java.io.File;
 
 /**
- * Azure DocumentDB sample for high availability.
- *  - Create a DocumentDB configured with a single read location
- *  - Get the credentials for the DocumentDB
- *  - Update the DocumentDB with additional read locations
- *  - add collection to the DocumentDB with throughput 4000
- *  - Delete the DocumentDB
+ * Azure CosmosDB sample for high availability.
+ *  - Create a CosmosDB configured with a single read location
+ *  - Get the credentials for the CosmosDB
+ *  - Update the CosmosDB with additional read locations
+ *  - add collection to the CosmosDB with throughput 4000
+ *  - Delete the CosmosDB
  */
-public final class ManageHADocumentDB {
+public final class ManageHACosmosDB {
     static final String DATABASE_ID = "TestDB";
     static final String COLLECTION_ID = "TestCollection";
 
@@ -49,10 +49,10 @@ public final class ManageHADocumentDB {
 
         try {
             //============================================================
-            // Create a DocumentDB
+            // Create a CosmosDB
 
-            System.out.println("Creating a DocumentDB...");
-            DocumentDBAccount documentDBAccount = azure.documentDBs().define(docDBName)
+            System.out.println("Creating a CosmosDB...");
+            CosmosDBAccount cosmosDBAccount = azure.cosmosDBAccounts().define(docDBName)
                     .withRegion(Region.US_EAST)
                     .withNewResourceGroup(rgName)
                     .withKind(DatabaseAccountKind.GLOBAL_DOCUMENT_DB)
@@ -61,41 +61,41 @@ public final class ManageHADocumentDB {
                     .withReadReplication(Region.US_CENTRAL)
                     .create();
 
-            System.out.println("Created DocumentDB");
-            Utils.print(documentDBAccount);
+            System.out.println("Created CosmosDB");
+            Utils.print(cosmosDBAccount);
 
             //============================================================
-            // Update document db with three additional read regions
+            // Update cosmos db with three additional read regions
 
-            System.out.println("Updating DocumentDB with three additional read replication regions");
-            documentDBAccount = documentDBAccount.update()
+            System.out.println("Updating CosmosDB with three additional read replication regions");
+            cosmosDBAccount = cosmosDBAccount.update()
                     .withReadReplication(Region.ASIA_EAST)
                     .withReadReplication(Region.AUSTRALIA_SOUTHEAST)
                     .withReadReplication(Region.UK_SOUTH)
                     .apply();
                     
-            System.out.println("Updated DocumentDB");
-            Utils.print(documentDBAccount);
+            System.out.println("Updated CosmosDB");
+            Utils.print(cosmosDBAccount);
 
             //============================================================
-            // Get credentials for the DocumentDB.
+            // Get credentials for the CosmosDB.
 
-            System.out.println("Get credentials for the DocumentDB");
-            DatabaseAccountListKeysResult databaseAccountListKeysResult = documentDBAccount.listKeys();
+            System.out.println("Get credentials for the CosmosDB");
+            DatabaseAccountListKeysResult databaseAccountListKeysResult = cosmosDBAccount.listKeys();
             String masterKey = databaseAccountListKeysResult.primaryMasterKey();
-            String endPoint = documentDBAccount.documentEndpoint();
+            String endPoint = cosmosDBAccount.documentEndpoint();
 
             //============================================================
-            // Connect to DocumentDB and add a collection
+            // Connect to CosmosDB and add a collection
 
             System.out.println("Connecting and adding collection");
             createDBAndAddCollection(masterKey, endPoint);
 
             //============================================================
-            // Delete DocumentDB.
+            // Delete CosmosDB.
             System.out.println("Deleting the docuemntdb");
-            azure.documentDBs().deleteById(documentDBAccount.id());
-            System.out.println("Deleted the DocumentDB");
+            azure.cosmosDBAccounts().deleteById(cosmosDBAccount.id());
+            System.out.println("Deleted the CosmosDB");
 
             return true;
         } catch (Exception e) {
@@ -175,6 +175,6 @@ public final class ManageHADocumentDB {
         }
     }
 
-    private ManageHADocumentDB() {
+    private ManageHACosmosDB() {
     }
 }

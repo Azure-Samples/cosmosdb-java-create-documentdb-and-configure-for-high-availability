@@ -1,18 +1,18 @@
 ---
-services: Documentdb
+services: Cosmosdb
 platforms: java
 author: alvadb
 ---
 
-## Getting Started with Documentdb - Manage HA Document DB - in Java ##
+## Getting Started with Cosmosdb - Manage HA Cosmos DB - in Java ##
 
 
-Azure DocumentDB sample for high availability.
-  - Create a DocumentDB configured with a single read location
-  - Get the credentials for the DocumentDB
-  - Update the DocumentDB with additional read locations
-  - Add collection to the DocumentDB with throughput 4000
-  - Delete the DocumentDB
+  Azure CosmosDB sample for high availability.
+   - Create a CosmosDB configured with a single read location
+   - Get the credentials for the CosmosDB
+   - Update the CosmosDB with additional read locations
+   - add collection to the CosmosDB with throughput 4000
+   - Delete the CosmosDB
  
 
 ## Running this Sample ##
