@@ -4,9 +4,8 @@ languages:
 - java
 products:
 - azure
-extensions:
-- services: Cosmosdb
-- platforms: java
+description: "Getting Started with Cosmosdb - Manage HA Cosmos DB - in Java"
+urlFragment: cosmosdb-java-create-documentdb-and-configure-for-high-availability
 ---
 
 # Getting Started with Cosmosdb - Manage HA Cosmos DB - in Java #
