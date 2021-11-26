@@ -11,7 +11,7 @@ urlFragment: cosmosdb-java-create-documentdb-and-configure-for-high-availability
 # Getting Started with Cosmosdb - Manage HA Cosmos DB - in Java
 
 
-  Azure CosmosDB sample for high availability.
+  Azure Cosmos DB sample for high availability.
    - Create a CosmosDB configured with a single read location
    - Get the credentials for the CosmosDB
    - Update the CosmosDB with additional read locations
